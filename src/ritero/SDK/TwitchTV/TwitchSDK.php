@@ -48,6 +48,7 @@ class TwitchSDK
     const URI_USER = 'users/';
     const URI_USER_FOLLOWS_CHANNEL = '/users/%s/follows/channels';
     const URI_USER_FOLLOW_RELATION = '/users/%s/follows/channels/%s';
+    const URI_USER_SUBCRIPTION_CHANNEL = '/users/%s/subscriptions/%s';
     const URI_CHANNEL = 'channels/';
     const URI_CHANNEL_FOLLOWS = 'channels/%s/follows';
     const URI_CHANNEL_SUBSCRIPTIONS = 'channels/%s/subscriptions';
@@ -149,6 +150,24 @@ class TwitchSDK
     public function userFollowRelationship($user, $channel)
     {
         return $this->request(sprintf(self::URI_USER_FOLLOW_RELATION, $user, $channel));
+    }
+
+    /**
+     * Gets the status of a subscription relationship
+     *
+     * @param  string $user      username
+     * @param  string $channel   channelname
+     * @param  string $userToken user authed token
+     *
+     * @return stdClass
+     */
+    public function userSubscriptionRelationship($user, $channel, $userToken)
+    {
+        $query_string = $this->buildQueryString(array(
+            'oauth_token' => $userToken,
+        ));
+
+        return $this->request(sprintf(self::URI_USER_SUBCRIPTION_CHANNEL, $user, $channel) . $query_string);
     }
 
     /**
