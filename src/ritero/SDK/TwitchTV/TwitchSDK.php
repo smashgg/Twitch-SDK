@@ -52,6 +52,7 @@ class TwitchSDK
     const URI_USER_FOLLOWS_CHANNEL = '/users/%s/follows/channels';
     const URI_USER_FOLLOW_RELATION = '/users/%s/follows/channels/%s';
     const URI_USER_SUBCRIPTION_CHANNEL = '/users/%s/subscriptions/%s';
+	const URI_CHANNEL_ID = 'channel/';
     const URI_CHANNEL = 'channels/';
     const URI_CHANNEL_FOLLOWS = 'channels/%s/follows';
     const URI_CHANNEL_SUBSCRIPTIONS = 'channels/%s/subscriptions';
@@ -238,6 +239,16 @@ class TwitchSDK
     {
         return $this->request(self::URI_CHANNEL . $channel);
     }
+
+	/**
+	 * Get the specified channel by ID
+	 * @param   int
+	 * @return  stdClass
+	 */
+	public function channelGetById($channelId)
+	{
+		return $this->request(self::URI_CHANNEL_ID . $channelId);
+	}
 
     /**
      * Get the specified team
