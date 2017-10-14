@@ -247,7 +247,7 @@ class TwitchSDK
 	 */
 	public function channelGetById($channelId)
 	{
-		return $this->request(self::URI_CHANNEL_ID . $channelId, 'GET', null, array (
+		return $this->request(self::URI_CHANNEL . $channelId, 'GET', null, array (
 			"Accept: application/vnd.twitchtv.v5+json"
 		));
 	}
