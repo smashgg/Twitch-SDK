@@ -835,12 +835,9 @@ class TwitchSDK
 			curl_setopt($crl, CURLOPT_SSL_VERIFYPEER, $this->ssl_verifypeer);
 		}
 
-		if (isset($params[''])) {
-
-		}
-
 		curl_setopt($crl, CURLOPT_HEADERFUNCTION, array($this, 'getHeader'));
 		curl_setopt($crl, CURLOPT_HEADER, false);
+		curl_setopt($crl, CURLOPT_VERBOSE, true);
 
 		switch ($method) {
 			case 'POST':
